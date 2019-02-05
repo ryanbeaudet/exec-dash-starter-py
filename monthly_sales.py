@@ -63,11 +63,18 @@ print(product_totals)
 # ... https://stackoverflow.com/questions/16476924/how-to-iterate-over-rows-in-a-dataframe-in-pandas
 # ... http://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.iterrows.html
 
+top_sellers = []
+
+rank = 1
 for i, row in product_totals.iterrows():
-    breakpoint()
-    print(type(row)) #> <class 'pandas.core.series.Series'>
-    print(row.name) #> Button-Down Shirt
-    print(row["sales price"])
+    d = {"rank": rank, "name": row.name, "monthly_sales": row["sales price"]}
+    top_sellers.append(d)
+    rank = rank + 1
+
+
+
+
+
 
 
 
