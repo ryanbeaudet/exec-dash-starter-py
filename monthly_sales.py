@@ -98,10 +98,10 @@ data = [
     graph_objs.Bar(
         x=sorted_product_sales,
         y=sorted_product_names,
-        orientation="h", # horizontal bar orientation
+        orientation="h", # orients bars horizontally
         text=sorted_bar_labels, # display bar label (USD-formatted string version of the product sales)
-        textposition="outside",
-        hoverinfo="text" # prevent duplication of sales price in hover text
+        textposition= "auto", # I prefer "outside", but it causes the label on the biggest bar to get cut off
+        hoverinfo="text" # prevents duplication of sales price in hover text
     )
 ]
 
@@ -110,7 +110,8 @@ chart_title = "Top Selling Products (March 2018)" # TODO: get month and year
 layout = graph_objs.Layout(
     title=chart_title,
     xaxis=dict(
-        tickformat= "$" # "${:,.0f}" # "${0:,.2f}" # ",.2f" # "$$$$$$$" # "${0:,.2f}" # ".2%"
+        tickformat= "$" #, # thought it might be possible to format here... # "${:,.0f}" # "${0:,.2f}" # ",.2f" # "$$$$$$$" # "${0:,.2f}" # ".2%"
+        #automargin=True
     ),
     yaxis=dict(
         autorange="reversed", # make sure top sellers are on the top
@@ -122,7 +123,9 @@ layout = graph_objs.Layout(
         #b=100,
         #t=100,
         pad=20
-    )
+        #autoexpand=False
+    ),
+    autosize=True
 )
 
 chart_options = {"data": data, "layout": layout}
