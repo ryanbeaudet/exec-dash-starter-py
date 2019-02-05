@@ -75,32 +75,38 @@ print("VISUALIZING THE DATA...")
 # ... https://plot.ly/python/getting-started
 # ... https://plot.ly/python/getting-started/#initialization-for-offline-plotting
 # ... https://plot.ly/python/horizontal-bar-charts/
+# ... https://plot.ly/python/axes/#reversed-axes
 
 chart_filename = "top-sellers-201803.html" # TODO: parse selected csv file name
 chart_filepath = os.path.join(os.path.dirname(__file__), "reports", chart_filename)
 #image_filename = "top-sellers-201803.png" # TODO: parse selected csv file name
 #image_filepath = os.path.join(os.path.dirname(__file__), "images", image_filename) # looks like the image just gets downloaded
-image_filename = "top-sellers-201803" # TODO: parse selected csv file name
+#image_filename = "top-sellers-201803" # TODO: parse selected csv file name
+
+sorted_product_names = ['giraffes', 'orangutans', 'monkeys'] # TODO: get from csv data
+sorted_product_sales = [23, 20, 14] # TODO: get from csv data
 
 data = [
     graph_objs.Bar(
-        x=[20, 14, 23],
-        y=['giraffes', 'orangutans', 'monkeys'],
+        x=sorted_product_sales,
+        y=sorted_product_names,
         orientation = "h" # horizontal bar orientation
     )
 ]
 
 chart_title = "Top Selling Products (March 2018)" # TODO: get month and year
 
-chart_options = {
-    "data": data,
-    "layout": graph_objs.Layout(title=chart_title),
-}
+layout = graph_objs.Layout(
+    title=chart_title,
+    yaxis=dict(autorange="reversed") # make sure top sellers are on the top
+)
+
+chart_options = {"data": data, "layout": layout}
 
 plotly.offline.plot(
     chart_options,
     filename=chart_filepath,
-    image="png",
-    image_filename=image_filename, # is it possible to specify a filepath?
+    #image="png",
+    #image_filename=image_filename, # is it possible to specify a filepath?
     auto_open=True
 )
