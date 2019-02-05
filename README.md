@@ -28,6 +28,27 @@ Process monthly sales data to generate a report of business insights:
 
 ```sh
 python monthly_sales.py
+#> -----------------------
+#> MONTH: March 2018
+#> -----------------------
+#> CRUNCHING THE DATA...
+#> -----------------------
+#> TOTAL MONTHLY SALES: $12,000.71
+#> -----------------------
+#> TOP SELLING PRODUCTS:
+#>   1) Button-Down Shirt: $6,960.35
+#>   2) Super Soft Hoodie: $1,875.00
+#>   3) Khaki Pants: $1,602.00
+#>   4) Vintage Logo Tee: $941.05
+#>   5) Brown Boots: $250.00
+#>   6) Sticker Pack: $216.00
+#>   7) Baseball Cap: $156.31
+#> -----------------------
+#> VISUALIZING THE DATA...
+#> -----------------------
+#> SAVED REPORT TO: reports/top-sellers-201803.html
 ```
+
+![example bar chart of top-selling products](/images/top-sellers-201803.png)
 
 ## [License](/LICENSE.md)
