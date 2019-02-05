@@ -2,6 +2,8 @@
 
 import os
 import pandas
+import plotly
+from plotly import graph_objs
 
 # utility function to convert float or integer to usd-formatted string (for printing)
 # ... adapted from: https://github.com/s2t2/shopping-cart-screencast/blob/30c2a2873a796b8766e9b9ae57a2764725ccc793/shopping_cart.py#L56-L59
@@ -75,3 +77,21 @@ print("VISUALIZING THE DATA...")
 #  + https://plot.ly/python/
 # ... take time to read through each and decide which one to try first
 # ... I'm going with plotly for now...
+
+# ... adapted from: https://plot.ly/python/bar-charts/
+
+data = [
+    graph_objs.Bar(
+        x=['giraffes', 'orangutans', 'monkeys'],
+        y=[20, 14, 23]
+    )
+]
+
+# ply.iplot(data, filename='basic-bar')
+
+# adapted from: https://plot.ly/python/getting-started/
+chart_options = {
+    "data": data,
+    "layout": graph_objs.Layout(title="hello world")
+}
+plotly.offline.plot(chart_options, auto_open=True)
