@@ -32,6 +32,10 @@ csv_data = pandas.read_csv(csv_filepath)
 
 monthly_total = csv_data["sales price"].sum()
 
+products_sold = []
+
+breakpoint()
+
 top_sellers = [
     {"rank": 1, "name": "Button-Down Shirt", "monthly_sales": 6960.35},
     {"rank": 2, "name": "Super Soft Hoodie", "monthly_sales": 1875.00},
