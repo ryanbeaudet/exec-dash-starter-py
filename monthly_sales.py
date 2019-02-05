@@ -83,8 +83,9 @@ chart_filepath = os.path.join(os.path.dirname(__file__), "reports", chart_filena
 #image_filepath = os.path.join(os.path.dirname(__file__), "images", image_filename) # looks like the image just gets downloaded
 #image_filename = "top-sellers-201803" # TODO: parse selected csv file name
 
-sorted_product_names = ['giraffes', 'orangutans', 'monkeys'] # TODO: get from csv data
-sorted_product_sales = [23, 20, 14] # TODO: get from csv data
+#breakpoint()
+sorted_product_names = [d["name"] for d in top_sellers] # list comprehension for mapping purposes!
+sorted_product_sales = [d["monthly_sales"] for d in top_sellers] # list comprehension for mapping purposes!
 
 data = [
     graph_objs.Bar(
@@ -110,3 +111,6 @@ plotly.offline.plot(
     #image_filename=image_filename, # is it possible to specify a filepath?
     auto_open=True
 )
+
+print("-----------------------")
+print("SEE: " + chart_filepath)
