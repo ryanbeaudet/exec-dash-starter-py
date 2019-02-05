@@ -81,8 +81,9 @@ chart_filepath = os.path.join(os.path.dirname(__file__), "reports", chart_filena
 
 data = [
     graph_objs.Bar(
-        x=['giraffes', 'orangutans', 'monkeys'],
-        y=[20, 14, 23]
+        x=[20, 14, 23],
+        y=['giraffes', 'orangutans', 'monkeys'],
+        orientation = "h" # horizontal bar orientation
     )
 ]
 
