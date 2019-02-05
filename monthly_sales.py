@@ -54,10 +54,31 @@ print(product_totals)
 #> Sticker Pack           108.00          48       216.00
 #> Baseball Cap           156.31           7       156.31
 
+# hmm looks like this dataframe the product name is like the index name. how to access it?
+# product_totals["product"] doesn't work...
+# product_totals[0] doesn't work...
+# ... google search for "pandas dataframe get index name" results in ...
+# ... https://stackoverflow.com/questions/18022845/pandas-index-column-title-or-name
+# ... `df.index.name` OK GOOD TO KNOW...
+# google search for "dataframe get index column" results in ...
+# ... https://stackoverflow.com/questions/17241004/how-do-i-get-a-dataframe-index-series-column-as-an-array-or-list
+# ... `df.index.name` OK CAN CONVERT TO LIST AND LOOP THROUGH THESE ...
+
 top_sellers = [
     {"rank": 1, "name": "Button-Down Shirt", "monthly_sales": 6960.35},
     {"rank": 2, "name": "Super Soft Hoodie", "monthly_sales": 1875.00},
 ] # TODO: get from csv_data
+
+
+
+
+
+
+
+
+
+
+
 
 #
 # OUTPUTS
