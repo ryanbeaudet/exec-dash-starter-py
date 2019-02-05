@@ -32,6 +32,11 @@ csv_data = pandas.read_csv(csv_filepath)
 
 monthly_total = csv_data["sales price"].sum()
 
+top_sellers = [
+    {"rank": 1, "name": "Button-Down Shirt", "monthly_sales": 6960.35},
+    {"rank": 2, "name": "Super Soft Hoodie", "monthly_sales": 1875.00},
+] # TODO: get from csv_data
+
 #
 # OUTPUTS
 #
@@ -47,9 +52,9 @@ print(f"TOTAL MONTHLY SALES: {to_usd(monthly_total)}")
 
 print("-----------------------")
 print("TOP SELLING PRODUCTS:")
-print("  1) Button-Down Shirt: $6,960.35")
-print("  2) Super Soft Hoodie: $1,875.00")
-print("  3) etc.") # TODO: get top sellers
+for d in top_sellers:
+    print("  " + str(d["rank"]) + ") " + d["name"] + ": " + to_usd(d["monthly_sales"]))
+
 
 print("-----------------------")
 print("VISUALIZING THE DATA...")
