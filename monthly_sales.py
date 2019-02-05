@@ -83,13 +83,6 @@ print("VISUALIZING THE DATA...")
 # ... https://plot.ly/python/bar-charts/#bar-chart-with-direct-labels
 # ... https://community.plot.ly/t/bar-chart-with-both-direct-labels-and-hover-text/7528
 
-chart_filename = "top-sellers-201803.html" # TODO: parse selected csv file name
-chart_filepath = os.path.join(os.path.dirname(__file__), "reports", chart_filename)
-#image_filename = "top-sellers-201803.png" # TODO: parse selected csv file name
-#image_filepath = os.path.join(os.path.dirname(__file__), "images", image_filename) # looks like the image just gets downloaded
-#image_filename = "top-sellers-201803" # TODO: parse selected csv file name
-
-#breakpoint()
 sorted_product_names = [d["name"] for d in top_sellers] # list comprehension for mapping purposes!
 sorted_product_sales = [d["monthly_sales"] for d in top_sellers] # list comprehension for mapping purposes!
 sorted_bar_labels = [to_usd(d["monthly_sales"]) for d in top_sellers] # list comprehension for mapping purposes!
@@ -109,32 +102,21 @@ chart_title = "Top Selling Products (March 2018)" # TODO: get month and year
 
 layout = graph_objs.Layout(
     title=chart_title,
-    xaxis=dict(
-        tickformat= "$" #, # thought it might be possible to format here... # "${:,.0f}" # "${0:,.2f}" # ",.2f" # "$$$$$$$" # "${0:,.2f}" # ".2%"
-        #automargin=True
-    ),
-    yaxis=dict(
-        autorange="reversed", # make sure top sellers are on the top
-        #automargin=True # still need some padding though ...
-    ),
-    margin=graph_objs.layout.Margin(
-        l=150, # increase left margin so we can see the full product names
-        #r=50,
-        #b=100,
-        #t=100,
-        pad=20
-        #autoexpand=False
-    ),
-    autosize=True
+    xaxis=dict(tickformat="$"), # thought it might be possible to format USD here... # "${:,.0f}" # "${0:,.2f}" # ",.2f" # "$$$$$$$" # "${0:,.2f}" # ".2%"
+    yaxis=dict(autorange="reversed"), # ensures top sellers are on the top
+    margin=graph_objs.layout.Margin(l=150, pad=20) # ensures we can see the full product names
 )
 
 chart_options = {"data": data, "layout": layout}
+
+chart_filename = "top-sellers-201803.html" # TODO: parse selected csv file name
+chart_filepath = os.path.join(os.path.dirname(__file__), "reports", chart_filename)
 
 plotly.offline.plot(
     chart_options,
     filename=chart_filepath,
     #image="png",
-    #image_filename=image_filename, # is it possible to specify a filepath?
+    #image_filename="top-sellers-201803", # prefer to download image file into this repo, but download location seems to not be customizable
     auto_open=True
 )
 
