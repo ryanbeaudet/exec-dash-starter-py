@@ -19,18 +19,18 @@ csv_filename = "sales-201803.csv" # TODO: allow user to specify
 csv_filepath = os.path.join(os.path.dirname(__file__), "data", csv_filename)
 
 # read csv file into a pandas dataframe object
-# ... adapted from: https://github.com/prof-rossetti/georgetown-opim-243-201901/blob/master/notes/python/packages/pandas.md
+# ... this and other pandas operations adapted from: https://github.com/prof-rossetti/georgetown-opim-243-201901/blob/master/notes/python/packages/pandas.md
 csv_data = pandas.read_csv(csv_filepath)
 
-print(type(csv_data)) #> <class 'pandas.core.frame.DataFrame'>
+# print(type(csv_data)) #> <class 'pandas.core.frame.DataFrame'>
 # print(csv_data)
-print(list(csv_data.columns))
+# print(list(csv_data.columns)) #> ['date', 'product', 'unit price', 'units sold', 'sales price']
 
 #
 # CALCULATIONS
 #
 
-monthly_total = 12000.71 # TODO: get from sales data
+monthly_total = csv_data["sales price"].sum()
 
 #
 # OUTPUTS
