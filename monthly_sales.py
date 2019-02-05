@@ -65,8 +65,13 @@ print("TOP SELLING PRODUCTS:")
 for d in top_sellers:
     print("  " + str(d["rank"]) + ") " + d["name"] + ": " + to_usd(d["monthly_sales"]))
 
-
 print("-----------------------")
 print("VISUALIZING THE DATA...")
 
 # TODO: display bar chart of top sellers
+
+# google searches like "python charts" result in references to two different packages:
+#  + https://matplotlib.org/
+#  + https://plot.ly/python/
+# ... take time to read through each and decide which one to try first
+# ... I'm going with plotly for now...
