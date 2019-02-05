@@ -58,16 +58,16 @@ print(product_totals)
 #     {"rank": 1, "name": "Button-Down Shirt", "monthly_sales": 6960.35},
 #     {"rank": 2, "name": "Super Soft Hoodie", "monthly_sales": 1875.00},
 # ]
-rank = 1
-top_sellers = []
-product_names = product_totals.index.values.tolist()
-for product_name in product_names:
-    monthly_sales = 10 # TODO: filter the dataframe
-    top_sellers.append({"rank": rank, "name": product_name, "monthly_sales": monthly_sales})
-    rank = rank + 1
 
+# google search for "pandas loop through each row in a dataframe" results in ...
+# ... https://stackoverflow.com/questions/16476924/how-to-iterate-over-rows-in-a-dataframe-in-pandas
+# ... http://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.iterrows.html
 
-
+for i, row in product_totals.iterrows():
+    breakpoint()
+    print(type(row)) #> <class 'pandas.core.series.Series'>
+    print(row.name) #> Button-Down Shirt
+    print(row["sales price"])
 
 
 
