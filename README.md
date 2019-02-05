@@ -4,7 +4,9 @@ A starter repository for the "Executive Dashboard" project.
 
 ## Prerequisites
 
+  + Anaconda 3.7
   + Python 3.7
+  + Pip
 
 ## Installation
 
@@ -12,6 +14,12 @@ Fork this [starter project repository](https://github.com/prof-rossetti/exec-das
 
 ```sh
 cd exec-dash-starter-py
+```
+
+Use Anaconda to create and activate a new virtual environment, perhaps called "dashboard-env". From inside the virtual environment, install package dependencies:
+
+```sh
+pip install pandas
 ```
 
 ## Usage
