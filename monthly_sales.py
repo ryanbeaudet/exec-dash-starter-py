@@ -32,7 +32,13 @@ csv_data = pandas.read_csv(csv_filepath)
 
 monthly_total = csv_data["sales price"].sum()
 
-products_sold = []
+# google search for "pandas unique column value" leads to...
+# ... https://chrisalbon.com/python/data_wrangling/pandas_list_unique_values_in_column/
+# ... https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.unique.html
+products_sold = csv_data["product"].unique() #> <class 'numpy.ndarray'> YIKES but looks like a list. can loop through? ...
+
+for product_name in products_sold:
+    print(product_name)
 
 breakpoint()
 
