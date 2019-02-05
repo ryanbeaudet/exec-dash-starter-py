@@ -80,6 +80,8 @@ print("VISUALIZING THE DATA...")
 # ... https://plot.ly/python/reference/#layout-margin
 # ... https://plot.ly/python/setting-graph-size/
 # ... https://plot.ly/python/setting-graph-size/#automatically-adjust-margins
+# ... https://plot.ly/python/bar-charts/#bar-chart-with-direct-labels
+# ... https://community.plot.ly/t/bar-chart-with-both-direct-labels-and-hover-text/7528
 
 chart_filename = "top-sellers-201803.html" # TODO: parse selected csv file name
 chart_filepath = os.path.join(os.path.dirname(__file__), "reports", chart_filename)
@@ -95,7 +97,10 @@ data = [
     graph_objs.Bar(
         x=sorted_product_sales,
         y=sorted_product_names,
-        orientation = "h" # horizontal bar orientation
+        orientation="h", # horizontal bar orientation
+        text=sorted_product_sales, # display bar label
+        textposition="outside",
+        hoverinfo="text" # prevent duplication of sales price in hover text
     )
 ]
 
