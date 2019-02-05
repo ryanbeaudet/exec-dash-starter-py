@@ -70,15 +70,14 @@ for d in top_sellers:
 print("-----------------------")
 print("VISUALIZING THE DATA...")
 
-# TODO: display bar chart of top sellers
+# adapted from:
+# ... https://plot.ly/python/bar-charts/
+# ... https://plot.ly/python/getting-started
+# ... https://plot.ly/python/getting-started/#initialization-for-offline-plotting
+# ... https://plot.ly/python/horizontal-bar-charts/
 
-# google searches like "python charts" result in references to two different packages:
-#  + https://matplotlib.org/
-#  + https://plot.ly/python/
-# ... take time to read through each and decide which one to try first
-# ... I'm going with plotly for now...
-
-# ... adapted from: https://plot.ly/python/bar-charts/
+chart_filename = "top-sellers-201803.html" # TODO: parse selected csv file name
+chart_filepath = os.path.join(os.path.dirname(__file__), "reports", chart_filename)
 
 data = [
     graph_objs.Bar(
@@ -87,11 +86,10 @@ data = [
     )
 ]
 
-# ply.iplot(data, filename='basic-bar')
+chart_title = "Top Selling Products (March 2018)" # TODO: get month and year
 
-# adapted from: https://plot.ly/python/getting-started/
 chart_options = {
     "data": data,
-    "layout": graph_objs.Layout(title="hello world")
+    "layout": graph_objs.Layout(title=chart_title),
 }
-plotly.offline.plot(chart_options, auto_open=True)
+plotly.offline.plot(chart_options, filename=chart_filepath, auto_open=True)
