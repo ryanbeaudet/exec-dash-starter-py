@@ -32,17 +32,27 @@ csv_data = pandas.read_csv(csv_filepath)
 
 monthly_total = csv_data["sales price"].sum()
 
-# google search for "pandas unique column value" leads to...
-# ... https://chrisalbon.com/python/data_wrangling/pandas_list_unique_values_in_column/
-# ... https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.unique.html
-products_sold = csv_data["product"].unique() #> <class 'numpy.ndarray'> YIKES but looks like a list. can loop through? ...
-# google search for "numpy.ndarray to list" leads to...
-# ... https://docs.scipy.org/doc/numpy-1.15.0/reference/generated/numpy.ndarray.tolist.html
-products_sold = products_sold.tolist()
+# google search for "pandas group by" leads to...
+# ... https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.groupby.html
+# top_sellers = csv_data.groupby(["product"]).sum("sales price") FIRST GUESS IS WRONG... TRY ANOTHER...
+# top_sellers = csv_data.groupby(["product"]).sum() # OK THIS LOOKS LIKE A DATAFRAME
+# type(top_sellers) #> <class 'pandas.core.frame.DataFrame'>
+product_totals = csv_data.groupby(["product"]).sum()
 
-for product_name in products_sold:
-    print(product_name)
-    # breakpoint() # TODO: maybe filter rows? but is there a pandas way to group by product?
+# google search for "pandas dataframe order rows" leads to ...
+# ... http://pandas.pydata.org/pandas-docs/version/0.19/generated/pandas.DataFrame.sort.html
+product_totals = product_totals.sort_values("sales price", ascending=False)
+
+print(product_totals)
+#>                    unit price  units sold  sales price
+#> product
+#> Button-Down Shirt     1821.40         107      6960.35
+#> Super Soft Hoodie     1350.00          25      1875.00
+#> Khaki Pants           1157.00          18      1602.00
+#> Vintage Logo Tee       398.75          59       941.05
+#> Brown Boots            250.00           2       250.00
+#> Sticker Pack           108.00          48       216.00
+#> Baseball Cap           156.31           7       156.31
 
 top_sellers = [
     {"rank": 1, "name": "Button-Down Shirt", "monthly_sales": 6960.35},
