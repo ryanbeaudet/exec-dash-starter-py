@@ -92,13 +92,14 @@ chart_filepath = os.path.join(os.path.dirname(__file__), "reports", chart_filena
 #breakpoint()
 sorted_product_names = [d["name"] for d in top_sellers] # list comprehension for mapping purposes!
 sorted_product_sales = [d["monthly_sales"] for d in top_sellers] # list comprehension for mapping purposes!
+sorted_bar_labels = [to_usd(d["monthly_sales"]) for d in top_sellers] # list comprehension for mapping purposes!
 
 data = [
     graph_objs.Bar(
         x=sorted_product_sales,
         y=sorted_product_names,
         orientation="h", # horizontal bar orientation
-        text=sorted_product_sales, # display bar label
+        text=sorted_bar_labels, # display bar label (USD-formatted string version of the product sales)
         textposition="outside",
         hoverinfo="text" # prevent duplication of sales price in hover text
     )
