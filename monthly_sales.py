@@ -78,6 +78,9 @@ print("VISUALIZING THE DATA...")
 
 chart_filename = "top-sellers-201803.html" # TODO: parse selected csv file name
 chart_filepath = os.path.join(os.path.dirname(__file__), "reports", chart_filename)
+#image_filename = "top-sellers-201803.png" # TODO: parse selected csv file name
+#image_filepath = os.path.join(os.path.dirname(__file__), "images", image_filename) # looks like the image just gets downloaded
+image_filename = "top-sellers-201803" # TODO: parse selected csv file name
 
 data = [
     graph_objs.Bar(
@@ -93,4 +96,11 @@ chart_options = {
     "data": data,
     "layout": graph_objs.Layout(title=chart_title),
 }
-plotly.offline.plot(chart_options, filename=chart_filepath, auto_open=True)
+
+plotly.offline.plot(
+    chart_options,
+    filename=chart_filepath,
+    image="png",
+    image_filename=image_filename, # is it possible to specify a filepath?
+    auto_open=True
+)
