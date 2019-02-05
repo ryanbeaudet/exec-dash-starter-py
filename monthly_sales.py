@@ -36,11 +36,13 @@ monthly_total = csv_data["sales price"].sum()
 # ... https://chrisalbon.com/python/data_wrangling/pandas_list_unique_values_in_column/
 # ... https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.unique.html
 products_sold = csv_data["product"].unique() #> <class 'numpy.ndarray'> YIKES but looks like a list. can loop through? ...
+# google search for "numpy.ndarray to list" leads to...
+# ... https://docs.scipy.org/doc/numpy-1.15.0/reference/generated/numpy.ndarray.tolist.html
+products_sold = products_sold.tolist()
 
 for product_name in products_sold:
     print(product_name)
-
-breakpoint()
+    # breakpoint() # TODO: maybe filter rows? but is there a pandas way to group by product?
 
 top_sellers = [
     {"rank": 1, "name": "Button-Down Shirt", "monthly_sales": 6960.35},
