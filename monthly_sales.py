@@ -76,6 +76,10 @@ print("VISUALIZING THE DATA...")
 # ... https://plot.ly/python/getting-started/#initialization-for-offline-plotting
 # ... https://plot.ly/python/horizontal-bar-charts/
 # ... https://plot.ly/python/axes/#reversed-axes
+# ... https://community.plot.ly/t/adjusting-width-of-y-axis-labels-in-heatmap/3684
+# ... https://plot.ly/python/reference/#layout-margin
+# ... https://plot.ly/python/setting-graph-size/
+# ... https://plot.ly/python/setting-graph-size/#automatically-adjust-margins
 
 chart_filename = "top-sellers-201803.html" # TODO: parse selected csv file name
 chart_filepath = os.path.join(os.path.dirname(__file__), "reports", chart_filename)
@@ -99,7 +103,20 @@ chart_title = "Top Selling Products (March 2018)" # TODO: get month and year
 
 layout = graph_objs.Layout(
     title=chart_title,
-    yaxis=dict(autorange="reversed") # make sure top sellers are on the top
+    xaxis=dict(
+        tickformat= "$" # "${:,.0f}" # "${0:,.2f}" # ",.2f" # "$$$$$$$" # "${0:,.2f}" # ".2%"
+    ),
+    yaxis=dict(
+        autorange="reversed", # make sure top sellers are on the top
+        #automargin=True # still need some padding though ...
+    ),
+    margin=graph_objs.layout.Margin(
+        l=150, # increase left margin so we can see the full product names
+        #r=50,
+        #b=100,
+        #t=100,
+        pad=20
+    )
 )
 
 chart_options = {"data": data, "layout": layout}
@@ -113,4 +130,4 @@ plotly.offline.plot(
 )
 
 print("-----------------------")
-print("SEE: " + chart_filepath)
+print("SAVED REPORT TO: " + chart_filepath)
