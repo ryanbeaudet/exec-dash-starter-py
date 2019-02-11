@@ -69,8 +69,17 @@ unique_product_names = unique_product_names.tolist() # convert numpy.ndarray to 
 top_sellers = []
 
 for product_name in unique_product_names:
+    # filering approach adapted from: https://github.com/prof-rossetti/georgetown-opim-243-201901/blob/master/notes/python/packages/pandas.md
+    # ... matching_rows = stats[stats["games"] > 150]
+    matching_rows = csv_data[csv_data["product"] == product_name]
+    #(Pdb) print(type(matching_rows)) #> <class 'pandas.core.frame.DataFrame'>
+    #(Pdb) matching_rows.head(3)
+    #>         date            product  unit price  units sold  sales price
+    #> 0  2018-03-01  Button-Down Shirt       65.05           2       130.10
+    #> 4  2018-03-02  Button-Down Shirt       65.05           7       455.35
+    #> 9  2018-03-03  Button-Down Shirt       65.05           8       520.40
+    breakpoint()
     product_monthly_sales = 100.00 # TODO: calculate this for real!
-    # breakpoint()
     top_sellers.append({"name": product_name, "monthly_sales": product_monthly_sales})
 
 #
