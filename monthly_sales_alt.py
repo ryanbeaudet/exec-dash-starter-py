@@ -66,25 +66,22 @@ print("-----------------------")
 print("VISUALIZING THE DATA...")
 
 # adapted from code posted to matplotlib Slack channel: https://georgetown-opim-py.slack.com/archives/CFZDKNKA4/p1549494877005200
+# google search for "matplotlib chart title" yields:
+#  + https://matplotlib.org/api/_as_gen/matplotlib.pyplot.title.html
+#  + https://matplotlib.org/gallery/subplots_axes_and_figures/figure_title.html
+#  + https://matplotlib.org/users/pyplot_tutorial.html
 
-bar_data = [
-    {"genre": "Thriller", "viewers": 123456},
-    {"genre": "Mystery", "viewers": 234567},
-    {"genre": "Sci-Fi", "viewers": 987654},
-    {"genre": "Fantasy", "viewers": 876543},
-    {"genre": "Documentary", "viewers": 283105},
-    {"genre": "Action", "viewers": 544099},
-    {"genre": "Romantic Comedy", "viewers": 121212}
-]
+chart_title = "Top Selling Products (March 2018)" #TODO: get month and year
 
-genres = []
-viewers = []
+sorted_products = []
+sorted_sales = []
 
-for s in bar_data:
-    genres.append(s["genre"])
-    viewers.append(s["viewers"])
+for d in top_sellers:
+    sorted_products.append(d["name"])
+    sorted_sales.append(d["monthly_sales"])
 
-plt.bar(genres, viewers)
-plt.ylabel("Viewers")
-plt.xlabel("Genre")
+plt.bar(sorted_products, sorted_sales)
+plt.title(chart_title)
+plt.xlabel("Product")
+plt.ylabel("Monthly Sales (USD)")
 plt.show()
