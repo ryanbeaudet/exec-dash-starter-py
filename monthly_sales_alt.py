@@ -1,5 +1,6 @@
 # monthly_sales.py
 
+import operator
 import os
 import pandas
 import matplotlib.pyplot as plt
@@ -81,6 +82,13 @@ for product_name in unique_product_names:
     product_monthly_sales = matching_rows["sales price"].sum()
     # print(type(product_monthly_sales)) #> FYI: <class 'numpy.float64'> which is like a normal float. possible to convert, but maybe not necessary...
     top_sellers.append({"name": product_name, "monthly_sales": product_monthly_sales})
+
+# sort the list of dictionaries to make sure they are looped through and charted in the right order
+# ... adapted from: https://github.com/prof-rossetti/georgetown-opim-243-201901/blob/master/notes/python/datatypes/lists.md#sorting
+# sort in descending order, google search for "python sorted function sort descending" yields:
+#  + https://www.programiz.com/python-programming/methods/built-in/sorted
+#  + https://docs.python.org/3/howto/sorting.html
+top_sellers = sorted(top_sellers, key=operator.itemgetter("monthly_sales"), reverse=True)
 
 #
 # OUTPUTS
