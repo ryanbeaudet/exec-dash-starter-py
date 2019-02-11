@@ -78,8 +78,8 @@ for product_name in unique_product_names:
     #> 0  2018-03-01  Button-Down Shirt       65.05           2       130.10
     #> 4  2018-03-02  Button-Down Shirt       65.05           7       455.35
     #> 9  2018-03-03  Button-Down Shirt       65.05           8       520.40
-    breakpoint()
-    product_monthly_sales = 100.00 # TODO: calculate this for real!
+    product_monthly_sales = matching_rows["sales price"].sum()
+    # print(type(product_monthly_sales)) #> FYI: <class 'numpy.float64'> which is like a normal float. possible to convert, but maybe not necessary...
     top_sellers.append({"name": product_name, "monthly_sales": product_monthly_sales})
 
 #
