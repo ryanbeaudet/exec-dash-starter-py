@@ -29,17 +29,19 @@ csv_data = pandas.read_csv(csv_filepath)
 
 monthly_total = csv_data["sales price"].sum()
 
-top_sellers = [
-    {"name": "Button-Down Shirt", "monthly_sales": 6960.34},
-    {"name": "Super Soft Hoodie", "monthly_sales": 1875.0},
-    {"name": "Khaki Pants", "monthly_sales": 1602.0},
-    {"name": "Vintage Logo Tee", "monthly_sales": 941.05},
-    {"name": "Brown Boots", "monthly_sales": 250.0},
-    {"name": "Sticker Pack", "monthly_sales": 216.0},
-    {"name": "Baseball Cap", "monthly_sales": 156.31}
-] # TODO: get from CSV data instead
-#
-# breakpoint()
+# top_sellers = [
+#     {"name": "Button-Down Shirt", "monthly_sales": 6960.34},
+#     {"name": "Super Soft Hoodie", "monthly_sales": 1875.0},
+#     {"name": "Khaki Pants", "monthly_sales": 1602.0},
+#     {"name": "Vintage Logo Tee", "monthly_sales": 941.05},
+#     {"name": "Brown Boots", "monthly_sales": 250.0},
+#     {"name": "Sticker Pack", "monthly_sales": 216.0},
+#     {"name": "Baseball Cap", "monthly_sales": 156.31}
+# ]
+
+top_sellers = []
+
+breakpoint()
 
 #
 # OUTPUTS
