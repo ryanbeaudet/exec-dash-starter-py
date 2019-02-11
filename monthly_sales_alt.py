@@ -2,6 +2,7 @@
 
 import os
 import pandas
+import matplotlib.pyplot as plt
 
 # utility function to convert float or integer to usd-formatted string (for printing)
 # ... adapted from: https://github.com/s2t2/shopping-cart-screencast/blob/30c2a2873a796b8766e9b9ae57a2764725ccc793/shopping_cart.py#L56-L59
@@ -64,30 +65,26 @@ for d in top_sellers:
 print("-----------------------")
 print("VISUALIZING THE DATA...")
 
-# TODO: make a chart
-#
 # adapted from code posted to matplotlib Slack channel: https://georgetown-opim-py.slack.com/archives/CFZDKNKA4/p1549494877005200
-#
-# import matplotlib.pyplot as plt
-#
-# bar_data = [
-#     {"genre": "Thriller", "viewers": 123456},
-#     {"genre": "Mystery", "viewers": 234567},
-#     {"genre": "Sci-Fi", "viewers": 987654},
-#     {"genre": "Fantasy", "viewers": 876543},
-#     {"genre": "Documentary", "viewers": 283105},
-#     {"genre": "Action", "viewers": 544099},
-#     {"genre": "Romantic Comedy", "viewers": 121212}
-# ]
-#
-# genres = []
-# viewers = []
-#
-# for s in bar_data:
-#   genres.append(s["genre"])
-#   viewers.append(s["viewers"])
-#
-# plt.bar(genres, viewers)
-# plt.ylabel("Viewers")
-# plt.xlabel("Genre")
-# plt.show()
+
+bar_data = [
+    {"genre": "Thriller", "viewers": 123456},
+    {"genre": "Mystery", "viewers": 234567},
+    {"genre": "Sci-Fi", "viewers": 987654},
+    {"genre": "Fantasy", "viewers": 876543},
+    {"genre": "Documentary", "viewers": 283105},
+    {"genre": "Action", "viewers": 544099},
+    {"genre": "Romantic Comedy", "viewers": 121212}
+]
+
+genres = []
+viewers = []
+
+for s in bar_data:
+    genres.append(s["genre"])
+    viewers.append(s["viewers"])
+
+plt.bar(genres, viewers)
+plt.ylabel("Viewers")
+plt.xlabel("Genre")
+plt.show()
