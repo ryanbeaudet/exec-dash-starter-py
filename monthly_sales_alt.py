@@ -68,8 +68,10 @@ unique_product_names = unique_product_names.tolist() # convert numpy.ndarray to 
 
 top_sellers = []
 
-breakpoint()
-
+for product_name in unique_product_names:
+    product_monthly_sales = 100.00 # TODO: calculate this for real!
+    # breakpoint()
+    top_sellers.append({"name": product_name, "monthly_sales": product_monthly_sales})
 
 #
 # OUTPUTS
