@@ -119,6 +119,16 @@ print("VISUALIZING THE DATA...")
 #  + https://matplotlib.org/api/_as_gen/matplotlib.pyplot.title.html
 #  + https://matplotlib.org/gallery/subplots_axes_and_figures/figure_title.html
 #  + https://matplotlib.org/users/pyplot_tutorial.html
+#
+# hmm, the product labels are cutting each other off, plus we should prefer to reserve the x axis for time
+# so how to orient the bars horizontally on the y axis instead?
+# could maybe flip x and y? (tries it, doesn't work)
+# let's see if there's a horizontal orientation configuration option
+# google search for "matplotlib bar chart horizontal orientation" yields:
+# ... + https://matplotlib.org/gallery/lines_bars_and_markers/barh.html
+# ... + https://python-graph-gallery.com/2-horizontal-barplot/
+# ... which both mention swithing .bar() with .barh()
+# ... success! but need to sort the reverse way I guess to display top seller at the top
 
 chart_title = "Top Selling Products (March 2018)" #TODO: get month and year
 
@@ -129,8 +139,13 @@ for d in top_sellers:
     sorted_products.append(d["name"])
     sorted_sales.append(d["monthly_sales"])
 
-plt.bar(sorted_products, sorted_sales)
+# reverse the order of both because we want to display top-sellers at the top:
+sorted_products.reverse()
+sorted_sales.reverse()
+
+plt.barh(sorted_products, sorted_sales)
 plt.title(chart_title)
 plt.xlabel("Product")
 plt.ylabel("Monthly Sales (USD)")
+
 plt.show()
