@@ -129,6 +129,17 @@ print("VISUALIZING THE DATA...")
 # ... + https://python-graph-gallery.com/2-horizontal-barplot/
 # ... which both mention swithing .bar() with .barh()
 # ... success! but need to sort the reverse way I guess to display top seller at the top
+#
+# the product labels are getting cut off by the left margin. is there a way to pad them?
+# google search for "matplotlib y axis left padding" yields:
+#  + https://matplotlib.org/api/_as_gen/matplotlib.pyplot.margins.html
+# ... which says to call margins() on the plot
+# ... after trying that out with varying parameter combinations, I don't think its doing what I want it to
+# ... so need to try something else
+# google search for "matplotlib bar labels getting cut off" yields:
+#  + https://stackoverflow.com/questions/6774086/why-is-my-xlabel-cut-off-in-my-matplotlib-plot
+# ... which mentions something about calling tight_layout() on the plot
+# ... success! wow it fixed a lot of the layout. nice. up-voting that answer on stack overflow! :-D
 
 chart_title = "Top Selling Products (March 2018)" #TODO: get month and year
 
@@ -148,4 +159,5 @@ plt.title(chart_title)
 plt.xlabel("Product")
 plt.ylabel("Monthly Sales (USD)")
 
+plt.tight_layout() # ensures all areas of the chart are visible by default (fixes labels getting cut off)
 plt.show()
