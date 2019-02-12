@@ -57,6 +57,12 @@ Sample information outputs:
 #> SAVED REPORT TO: reports/top-sellers-201803.html
 ```
 
+Example chart:
+
 ![example bar chart of top-selling products](/images/top-sellers-201803.png)
+
+Alternative chart:
+
+![example bar chart of top-selling products](/images/top-sellers-201803-alt.png)
 
 ## [License](/LICENSE.md)

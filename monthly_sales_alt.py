@@ -112,8 +112,8 @@ ax.xaxis.set_major_formatter(usd_formatter)
 # chart construction
 plt.barh(sorted_products, sorted_sales)
 plt.title(chart_title)
-plt.xlabel("Product")
-plt.ylabel("Monthly Sales (USD)")
+plt.ylabel("Product")
+plt.xlabel("Monthly Sales (USD)")
 
 plt.tight_layout() # ensures all areas of the chart are visible by default (fixes labels getting cut off)
 plt.show()
