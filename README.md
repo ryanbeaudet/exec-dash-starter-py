@@ -28,6 +28,14 @@ Process monthly sales data to generate a report of business insights:
 
 ```sh
 python monthly_sales.py
+
+# see also this alternative approach:
+python monthly_sales_alt.py
+```
+
+Sample information outputs:
+
+```py
 #> -----------------------
 #> MONTH: March 2018
 #> -----------------------
