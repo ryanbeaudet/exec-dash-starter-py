@@ -90,19 +90,23 @@ print("VISUALIZING THE DATA...")
 #  + https://stackoverflow.com/questions/38152356/matplotlib-dollar-sign-with-thousands-comma-tick-labels
 #  + https://pbpython.com/effective-matplotlib.html#customizing-the-plot
 #  + https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots
+#  + https://python-graph-gallery.com/10-barplot-with-number-of-observation/
 
 chart_title = "Top Selling Products (March 2018)" #TODO: get month and year
 
 sorted_products = []
 sorted_sales = []
+#sorted_sales_labels = []
 
 for d in top_sellers:
     sorted_products.append(d["name"])
     sorted_sales.append(d["monthly_sales"])
+    #sorted_sales_labels.append(to_usd(d["monthly_sales"]))
 
 # reverse the order of both because we want to display top-sellers at the top:
 sorted_products.reverse()
 sorted_sales.reverse()
+#sorted_sales_labels.reverse()
 
 # this section needs to come before the chart construction
 fig, ax = plt.subplots() # enables us to further customize the figure and/or the axes
@@ -114,6 +118,29 @@ plt.barh(sorted_products, sorted_sales)
 plt.title(chart_title)
 plt.ylabel("Product")
 plt.xlabel("Monthly Sales (USD)")
+
+# adapted from:
+# + https://stackoverflow.com/a/28931750/670433
+# + https://python-graph-gallery.com/10-barplot-with-number-of-observation/
+# + https://matplotlib.org/2.0.1/api/_as_gen/matplotlib.axes.Axes.text.html
+# + https://stackoverflow.com/questions/30228069/how-to-display-the-value-of-the-bar-on-each-bar-with-pyplot-barh
+#
+#bars = ax.patches
+#for rect, label in zip(bars, sorted_sales_labels):
+#    x = rect.get_x()
+#    y = rect.get_y()
+#    height = rect.get_height()
+#    width = rect.get_width()
+#    print(label, {"x": x, "y": y, "h": height, "w":width})
+#    ax.text(width, height, label) #, ha="center", va="bottom"
+#
+# ... maybe try something else
+# ... this works because the bar size is the same as the sales
+for bar_index, bar_size in enumerate(sorted_sales):
+    w = bar_size + 3 # to the right of the bar's right edge
+    h = bar_index - .1 # below the bar's top edge
+    bar_label = to_usd(bar_size)
+    ax.text(w, h, bar_label)
 
 plt.tight_layout() # ensures all areas of the chart are visible by default (fixes labels getting cut off)
 plt.show()
