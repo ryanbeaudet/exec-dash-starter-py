@@ -174,10 +174,10 @@ sorted_sales.reverse()
 # BEGIN CHART CONSTRUCTION
 
 fig, ax = plt.subplots() # enable us to further customize the figure and/or the axes
-# breakpoint()
+#breakpoint()
 # (Pdb) print(type(fig)) #> <class 'matplotlib.figure.Figure'>
 # (Pdb) print(type(ax)) #> <class 'matplotlib.axes._subplots.AxesSubplot'>
-usd_formatter = ticker.FormatStrFormatter('$%1.2f')
+usd_formatter = ticker.FormatStrFormatter('$%1.0f')
 ax.xaxis.set_major_formatter(usd_formatter)
 
 plt.barh(sorted_products, sorted_sales)
