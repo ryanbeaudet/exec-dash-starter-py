@@ -4,6 +4,7 @@ import operator
 import os
 import pandas
 import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
 
 # utility function to convert float or integer to usd-formatted string (for printing)
 # ... adapted from: https://github.com/s2t2/shopping-cart-screencast/blob/30c2a2873a796b8766e9b9ae57a2764725ccc793/shopping_cart.py#L56-L59
@@ -140,6 +141,22 @@ print("VISUALIZING THE DATA...")
 #  + https://stackoverflow.com/questions/6774086/why-is-my-xlabel-cut-off-in-my-matplotlib-plot
 # ... which mentions something about calling tight_layout() on the plot
 # ... success! wow it fixed a lot of the layout. nice. up-voting that answer on stack overflow! :-D
+#
+# hmm the axis label should be formatted as USD if possible
+# google search for "matplotlib format axis USD" yields:
+#  + https://matplotlib.org/gallery/pyplots/dollar_ticks.html
+#  + https://stackoverflow.com/questions/38152356/matplotlib-dollar-sign-with-thousands-comma-tick-labels
+# ... which mention calling set_major_formatter() on some kind of yaxis object
+# ... and also something about StrMethodFormatter
+# ... and also constructing the plot differently like ... fig, ax = plt.subplots()
+# ... not sure I'm comfortable with what I see so far. looking further down the page of search results
+#  + https://pbpython.com/effective-matplotlib.html#customizing-the-plot
+# ... which provides some human context about the previous results I was seeing.
+# ... I'm kind of scared but I have version control to fall back on,
+# ... so I guess I'm feeling brave to take a leap of faith on this subplots() approach
+# ... for more comfort, I'm looking into the documentation
+#  + https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots
+# ... and I'm going to drop a breakpoint() to investigate when I do it
 
 chart_title = "Top Selling Products (March 2018)" #TODO: get month and year
 
@@ -153,6 +170,15 @@ for d in top_sellers:
 # reverse the order of both because we want to display top-sellers at the top:
 sorted_products.reverse()
 sorted_sales.reverse()
+
+# BEGIN CHART CONSTRUCTION
+
+fig, ax = plt.subplots() # enable us to further customize the figure and/or the axes
+# breakpoint()
+# (Pdb) print(type(fig)) #> <class 'matplotlib.figure.Figure'>
+# (Pdb) print(type(ax)) #> <class 'matplotlib.axes._subplots.AxesSubplot'>
+usd_formatter = ticker.FormatStrFormatter('$%1.2f')
+ax.xaxis.set_major_formatter(usd_formatter)
 
 plt.barh(sorted_products, sorted_sales)
 plt.title(chart_title)
