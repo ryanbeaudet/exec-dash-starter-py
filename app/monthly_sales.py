@@ -18,7 +18,7 @@ csv_filename = "sales-201803.csv" # TODO: allow user to specify
 
 # reference a file in the "data" directory
 # ... adapted from: https://github.com/prof-rossetti/georgetown-opim-243-201901/blob/master/notes/python/modules/os.md#file-operations
-csv_filepath = os.path.join(os.path.dirname(__file__), "data", csv_filename)
+csv_filepath = os.path.join(os.path.dirname(__file__), "..", "data", csv_filename)
 
 # read csv file into a pandas dataframe object
 # ... this and other pandas operations adapted from: https://github.com/prof-rossetti/georgetown-opim-243-201901/blob/master/notes/python/packages/pandas.md
@@ -110,7 +110,7 @@ layout = graph_objs.Layout(
 chart_options = {"data": data, "layout": layout}
 
 chart_filename = "top-sellers-201803.html" # TODO: parse selected csv file name
-chart_filepath = os.path.join(os.path.dirname(__file__), "reports", chart_filename)
+chart_filepath = os.path.join(os.path.dirname(__file__), "..", "reports", chart_filename)
 
 plotly.offline.plot(
     chart_options,

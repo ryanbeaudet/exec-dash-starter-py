@@ -65,4 +65,18 @@ Alternative chart:
 
 ![example bar chart of top-selling products](/images/top-sellers-201803-alt.png)
 
+## Testing
+
+From within the virtual environment, install the `pytest` package (first time only):
+
+```sh
+pip install pytest
+```
+
+Run tests:
+
+```py
+pytest
+```
+
 ## [License](/LICENSE.md)
