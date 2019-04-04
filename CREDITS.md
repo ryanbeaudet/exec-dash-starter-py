@@ -26,3 +26,7 @@
   + https://stackoverflow.com/questions/38152356/matplotlib-dollar-sign-with-thousands-comma-tick-labels
   + https://pbpython.com/effective-matplotlib.html#customizing-the-plot
   + https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots
+
+## Pytest
+
+  + https://stackoverflow.com/a/40724361/670433

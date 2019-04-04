@@ -19,7 +19,7 @@ cd exec-dash-starter-py
 Use Anaconda to create and activate a new virtual environment, perhaps called "dashboard-env". From inside the virtual environment, install package dependencies:
 
 ```sh
-pip install pandas plotly
+pip install -r requirements.txt
 ```
 
 ## Usage
