@@ -58,6 +58,10 @@ if __name__ == "__main__":
     #  + https://docs.python.org/3/howto/sorting.html
     top_sellers = sorted(top_sellers, key=operator.itemgetter("monthly_sales"), reverse=True)
 
+    breakpoint() # what do we expect top_sellers to look like?
+    #> [{'name': 'Button-Down Shirt', 'monthly_sales': 6960.35}, {'name': 'Super Soft Hoodie', 'monthly_sales': 1875.0}, {'name': 'Khaki Pants', 'monthly_sales': 1602.0}, {'name': 'Vintage Logo Tee', 'monthly_sales': 941.0500000000001}, {'name': 'Brown Boots', 'monthly_sales': 250.0}, {'name': 'Sticker Pack', 'monthly_sales': 216.0}, {'name': 'Baseball Cap', 'monthly_sales': 156.31}]
+
+
     #
     # OUTPUTS
     #
