@@ -6,8 +6,17 @@ from plotly import graph_objs
 
 from app.utils import to_usd
 
+# expects "sales_data" to be a pandas dataframe with headers: "product", "sales price", etc.
 def top_selling_products(sales_data):
-    return [1,2,3]
+    product_totals = sales_data.groupby(["product"]).sum()
+    product_totals = product_totals.sort_values("sales price", ascending=False)
+    top_sellers = []
+    rank = 1
+    for i, row in product_totals.iterrows():
+        d = {"rank": rank, "name": row.name, "monthly_sales": row["sales price"]}
+        top_sellers.append(d)
+        rank = rank + 1
+    return top_sellers
 
 if __name__ == "__main__":
 
@@ -23,19 +32,7 @@ if __name__ == "__main__":
 
     monthly_total = csv_data["sales price"].sum()
 
-    product_totals = csv_data.groupby(["product"]).sum()
-
-    product_totals = product_totals.sort_values("sales price", ascending=False)
-
-    top_sellers = []
-    rank = 1
-    for i, row in product_totals.iterrows():
-        d = {"rank": rank, "name": row.name, "monthly_sales": row["sales price"]}
-        top_sellers.append(d)
-        rank = rank + 1
-
-    breakpoint() # what do we expect here?
-    #> [{'rank': 1, 'name': 'Button-Down Shirt', 'monthly_sales': 6960.3499999999985}, {'rank': 2, 'name': 'Super Soft Hoodie', 'monthly_sales': 1875.0}, {'rank': 3, 'name': 'Khaki Pants', 'monthly_sales': 1602.0}, {'rank': 4, 'name': 'Vintage Logo Tee', 'monthly_sales': 941.0500000000001}, {'rank': 5, 'name': 'Brown Boots', 'monthly_sales': 250.0}, {'rank': 6, 'name': 'Sticker Pack', 'monthly_sales': 216.0}, {'rank': 7, 'name': 'Baseball Cap', 'monthly_sales': 156.31}]
+    top_sellers = top_selling_products(csv_data)
 
     # OUTPUTS
 
