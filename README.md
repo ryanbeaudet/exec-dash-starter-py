@@ -76,7 +76,7 @@ pip install pytest
 Run tests:
 
 ```py
-pytest
+pytest --disable-pytest-warnings # suppresses warnings thrown by matplotlib during testing
 ```
 
 ## [License](/LICENSE.md)
