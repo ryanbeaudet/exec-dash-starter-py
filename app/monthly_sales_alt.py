@@ -5,10 +5,7 @@ import pandas
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 
-# utility function to convert float or integer to usd-formatted string (for printing), adapted from:
-#  + https://github.com/s2t2/shopping-cart-screencast/blob/30c2a2873a796b8766e9b9ae57a2764725ccc793/shopping_cart.py#L56-L59
-def to_usd(my_price):
-    return "${0:,.2f}".format(my_price) #> $12,000.71
+from app.utils import to_usd
 
 # expects "sales_data" to be a pandas dataframe with headers: "product", "sales price", etc.
 def top_selling_products(sales_data):

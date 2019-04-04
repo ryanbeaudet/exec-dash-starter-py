@@ -5,10 +5,7 @@ import pandas
 import plotly
 from plotly import graph_objs
 
-# utility function to convert float or integer to usd-formatted string (for printing)
-# ... adapted from: https://github.com/s2t2/shopping-cart-screencast/blob/30c2a2873a796b8766e9b9ae57a2764725ccc793/shopping_cart.py#L56-L59
-def to_usd(my_price):
-    return "${0:,.2f}".format(my_price) #> $12,000.71
+from utils import to_usd
 
 if __name__ == "__main__":
 
