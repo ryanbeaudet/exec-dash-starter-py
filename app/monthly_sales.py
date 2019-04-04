@@ -1,11 +1,13 @@
-# monthly_sales.py
 
 import os
 import pandas
 import plotly
 from plotly import graph_objs
 
-from utils import to_usd
+from app.utils import to_usd
+
+def top_selling_products(sales_data):
+    return [1,2,3]
 
 if __name__ == "__main__":
 
@@ -31,6 +33,9 @@ if __name__ == "__main__":
         d = {"rank": rank, "name": row.name, "monthly_sales": row["sales price"]}
         top_sellers.append(d)
         rank = rank + 1
+
+    breakpoint() # what do we expect here?
+    #> [{'rank': 1, 'name': 'Button-Down Shirt', 'monthly_sales': 6960.3499999999985}, {'rank': 2, 'name': 'Super Soft Hoodie', 'monthly_sales': 1875.0}, {'rank': 3, 'name': 'Khaki Pants', 'monthly_sales': 1602.0}, {'rank': 4, 'name': 'Vintage Logo Tee', 'monthly_sales': 941.0500000000001}, {'rank': 5, 'name': 'Brown Boots', 'monthly_sales': 250.0}, {'rank': 6, 'name': 'Sticker Pack', 'monthly_sales': 216.0}, {'rank': 7, 'name': 'Baseball Cap', 'monthly_sales': 156.31}]
 
     # OUTPUTS
 

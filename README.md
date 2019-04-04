@@ -27,10 +27,10 @@ pip install -r requirements.txt
 Process monthly sales data to generate a report of business insights:
 
 ```sh
-python monthly_sales.py
+python -m app.monthly_sales
 
 # see also this alternative approach:
-python monthly_sales_alt.py
+python -m app.monthly_sales_alt
 ```
 
 Sample information outputs:
