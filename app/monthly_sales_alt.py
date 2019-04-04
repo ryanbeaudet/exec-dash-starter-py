@@ -1,4 +1,3 @@
-# monthly_sales.py
 
 import operator
 import os
